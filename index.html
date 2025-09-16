@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JGI Renovations - Transform Your Home | Brampton & GTA</title>
+    <meta name="description" content="Expert renovation and remodeling services in Brampton & GTA. Kitchen remodeling, bathroom renovation, legal basements, and more. Licensed & insured.">
+    
+    <!-- Modern CSS with CSS Grid, Flexbox, and Custom Properties -->
+    <style>
+        /* CSS Custom Properties for Modern Theming */
+        :root {
+            --primary-color: #FF6600;
+            --primary-dark: #E65A00;
+            --secondary-color: #2C3E50;
+            --accent-color: #3498DB;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --bg-light: #FFFFFF;
+            --bg-section: #F8F9FA;
+            --bg-dark: #2C3E50;
+            --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 1200px;
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        }
+
+        /* Modern CSS Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* Container System */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Modern Header with Glassmorphism */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-text .primary { color: var(--text-dark); }
+        .logo-text .accent { color: var(--primary-color); }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-light);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        /* Hero Section with Modern Design */
+        .hero {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="1000" height="1000" fill="url(%23grain)"/></svg>');
+            background-size: cover, 100px 100px;
+            background-position: center, 0 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M0,1000 Q250,800 500,900 T1000,800 L1000,1000 Z" fill="rgba(255,102,0,0.1)"/></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Main Content Sections */
+        .main {
+            padding-top: 80px; /* Account for fixed header */
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section:nth-child(even) {
+            background: var(--bg-section);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #e3e3e3, #f8f9fa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 102, 0, 0.1), rgba(52, 152, 219, 0.1));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .blog-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            gap: 0.75rem;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            background: var(--bg-dark);
+            color: white;
+            position: relative;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #2C3E50 0%, #1a252f 100%);
+            z-index: 1;
+        }
+
+        .contact-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            font-weight: 400;
+        }
+
+        .contact-item strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .contact-item div {
+            color: #ffffff;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #f8f9fa;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.2);
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* Ensure text is visible in all browsers */
+        .form-input:-webkit-autofill,
+        .form-input:-webkit-autofill:hover,
+        .form-input:-webkit-autofill:focus {
+            -webkit-text-fill-color: white !important;
+            -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.1) inset !important;
+            transition: background-color 5000s ease-in-out 0s !important;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .service-card, .blog-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .loading {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#home" class="logo">
+                    <div class="logo-icon">JGI</div>
+                    <div class="logo-text">
+                        <span class="primary">JGI</span> <span class="accent">Renovations</span>
+                    </div>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#blog" class="nav-link">Blog</a></li>
+                    <li><a href="#contact" class="cta-button">Get Quote</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Transform Your Home with Expert Craftsmanship</h1>
+                    <p>Professional renovation and remodeling services in Brampton & GTA. From legal basements to complete home makeovers, we bring your vision to life.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Get Free Estimate</a>
+                        <a href="#gallery" class="btn-secondary">View Our Work</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About JGI Renovations</h2>
+                    <p class="section-subtitle">Transforming homes across Brampton and the GTA with exceptional craftsmanship, transparent pricing, and personalized service.</p>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-light);">
+                        JGI Renovation & Remodeling is your trusted partner for quality home improvement. Our team of passionate professionals is dedicated to transforming homes with meticulous attention to detail and superior craftsmanship. We believe in creating spaces that not only look beautiful but enhance your everyday life, building lasting relationships through our commitment to excellence.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Services</h2>
+                    <p class="section-subtitle">Comprehensive renovation solutions tailored to your needs and budget</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🏠</div>
+                        <h3 class="service-title">Legal Basement</h3>
+                        <p>Create a safe, legal, and inviting basement apartment to generate income or expand your living space with proper permits and compliance.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛁</div>
+                        <h3 class="service-title">Bathroom Renovation</h3>
+                        <p>Transform your bathroom with modern fixtures, elegant tiling, and functional designs that blend style with everyday practicality.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🍳</div>
+                        <h3 class="service-title">Kitchen Remodeling</h3>
+                        <p>Create the kitchen of your dreams with modern appliances, custom cabinetry, and layouts perfect for cooking and entertaining.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📐</div>
+                        <h3 class="service-title">Flooring & Trim</h3>
+                        <p>Expert installation of hardwood, tile, and luxury vinyl with professional baseboards, casings, and crown molding finishing touches.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3 class="service-title">Painting Services</h3>
+                        <p>Complete interior painting services including drywall repair, patching, priming, and flawless finish application.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3 class="service-title">Plumbing & Electrical</h3>
+                        <p>Licensed rough-in and finish work for new construction and renovations, ensuring safety and code compliance.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🗄️</div>
+                        <h3 class="service-title">Custom Cabinetry</h3>
+                        <p>Bespoke storage solutions for every room including kitchens, bathrooms, closets, and built-in entertainment centers.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🧱</div>
+                        <h3 class="service-title">Drywall & Finishing</h3>
+                        <p>Professional drywall installation and expert taping for seamless walls and ceilings ready for your chosen finish.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🏡</div>
+                        <h3 class="service-title">Exterior Services</h3>
+                        <p>Enhance your outdoor living with deck construction, fence installation, shed building, and exterior improvements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section" id="gallery">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Work Gallery</h2>
+                    <p class="section-subtitle">See the transformations we've completed for satisfied homeowners</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div>🏠 Modern Kitchen Remodel</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div>🛁 Luxury Bathroom Renovation</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div>🏘️ Legal Basement Apartment</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div>🎨 Living Room Makeover</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div>🚪 Custom Built-ins</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div>🏡 Exterior Deck Addition</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="section" id="blog">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Latest Trends & Tips</h2>
+                    <p class="section-subtitle">Stay updated with the latest in home renovation and design</p>
+                </div>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="blog-image">📱 Smart Home Tech</div>
+                        <div class="blog-content">
+                            <div class="blog-date">January 15, 2025</div>
+                            <h3 class="blog-title">Smart Home Integration in 2025</h3>
+                            <p class="blog-excerpt">Discover the latest smart home technologies that are revolutionizing modern renovations, from intelligent lighting to automated climate control.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-image">🎨 Color Trends</div>
+                        <div class="blog-content">
+                            <div class="blog-date">January 10, 2025</div>
+                            <h3 class="blog-title">2025 Interior Color Trends</h3>
+                            <p class="blog-excerpt">Explore this year's trending colors and how to incorporate them into your renovation project for a fresh, contemporary look.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-image">💰 Investment Tips</div>
+                        <div class="blog-content">
+                            <div class="blog-date">January 5, 2025</div>
+                            <h3 class="blog-title">Best ROI Home Renovations</h3>
+                            <p class="blog-excerpt">Learn which renovation projects provide the highest return on investment and add the most value to your Brampton home.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact-section" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" style="color: white;">Get Your Free Estimate</h2>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Ready to transform your home? Contact us today for a personalized consultation.</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div style="color: #ffffff; font-size: 1rem;">
+                                <strong style="color: #ffffff; display: block; margin-bottom: 4px;">Phone:</strong>
+                                <span style="color: #e8e8e8;">647-303-5159</span><br>
+                                <span style="color: #e8e8e8;">647-991-4413</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div style="color: #ffffff; font-size: 1rem;">
+                                <strong style="color: #ffffff; display: block; margin-bottom: 4px;">Email:</strong>
+                                <span style="color: #e8e8e8;">jgireno17@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div style="color: #ffffff; font-size: 1rem;">
+                                <strong style="color: #ffffff; display: block; margin-bottom: 4px;">Service Area:</strong>
+                                <span style="color: #e8e8e8;">Brampton & Greater Toronto Area, ON</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">⏰</div>
+                            <div style="color: #ffffff; font-size: 1rem;">
+                                <strong style="color: #ffffff; display: block; margin-bottom: 4px;">Business Hours:</strong>
+                                <span style="color: #e8e8e8;">Mon-Fri: 8:00 AM - 6:00 PM</span><br>
+                                <span style="color: #e8e8e8;">Sat: 9:00 AM - 4:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="quoteForm">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="(647) 123-4567" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="service" class="form-label">Service Interested In</label>
+                                <select id="service" name="service" class="form-input" style="color: #ffffff;">
+                                    <option value="" style="color: #333;">Select a service...</option>
+                                    <option value="legal-basement" style="color: #333;">Legal Basement</option>
+                                    <option value="bathroom-renovation" style="color: #333;">Bathroom Renovation</option>
+                                    <option value="kitchen-remodeling" style="color: #333;">Kitchen Remodeling</option>
+                                    <option value="flooring" style="color: #333;">Flooring & Trim</option>
+                                    <option value="painting" style="color: #333;">Painting Services</option>
+                                    <option value="plumbing-electrical" style="color: #333;">Plumbing & Electrical</option>
+                                    <option value="custom-cabinetry" style="color: #333;">Custom Cabinetry</option>
+                                    <option value="drywall" style="color: #333;">Drywall & Finishing</option>
+                                    <option value="exterior" style="color: #333;">Exterior Services</option>
+                                    <option value="other" style="color: #333;">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="details" class="form-label">Project Details</label>
+                                <textarea id="details" name="details" class="form-textarea" rows="4" placeholder="Tell us about your project, timeline, and any specific requirements..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1.25rem;">Send Free Quote Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#services" class="footer-link">Services</a>
+                    <a href="#gallery" class="footer-link">Gallery</a>
+                    <a href="#blog" class="footer-link">Blog</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 JGI Renovations & Remodeling. All Rights Reserved. | Licensed & Insured</p>
+            </div>
+        </footer>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Modern JavaScript with ES6+ features
+        class JGIWebsite {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.setupScrollEffects();
+                this.setupFormHandling();
+                this.setupSmoothScrolling();
+                this.setupAnimations();
+            }
+
+            setupEventListeners() {
+                // Header scroll effect
+                window.addEventListener('scroll', () => {
+                    const header = document.getElementById('header');
+                    if (window.scrollY > 100) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+
+                // Mobile menu toggle
+                const mobileToggle = document.querySelector('.mobile-menu-toggle');
+                const navMenu = document.querySelector('.nav-menu');
+                
+                if (mobileToggle) {
+                    mobileToggle.addEventListener('click', () => {
+                        navMenu.classList.toggle('active');
+                    });
+                }
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.nav') && navMenu?.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+
+            setupScrollEffects() {
+                // Intersection Observer for fade-in animations
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe all sections and cards
+                document.querySelectorAll('.section, .service-card, .gallery-item, .blog-card').forEach(el => {
+                    el.classList.add('fade-in');
+                    observer.observe(el);
+                });
+            }
+
+            setupFormHandling() {
+                const form = document.getElementById('quoteForm');
+                if (form) {
+                    form.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        this.handleFormSubmission(form);
+                    });
+                }
+            }
+
+            handleFormSubmission(form) {
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                
+                // Show loading state
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+
+                // Simulate form submission (replace with actual API call)
+                setTimeout(() => {
+                    alert(`Thank you ${data.name}! We've received your quote request and will contact you within 24 hours.`);
+                    form.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
+            }
+
+            setupSmoothScrolling() {
+                // Smooth scrolling for navigation links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const target = document.querySelector(anchor.getAttribute('href'));
+                        if (target) {
+                            const headerHeight = document.querySelector('.header').offsetHeight;
+                            const targetPosition = target.offsetTop - headerHeight;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+            }
+
+            setupAnimations() {
+                // Add staggered animation delays to service cards
+                document.querySelectorAll('.service-card').forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                });
+
+                // Add hover effects to gallery items
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    item.addEventListener('mouseenter', () => {
+                        item.style.transform = 'scale(1.02) rotate(1deg)';
+                    });
+                    
+                    item.addEventListener('mouseleave', () => {
+                        item.style.transform = 'scale(1) rotate(0deg)';
+                    });
+                });
+            }
+        }
+
+        // Initialize the website when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new JGIWebsite();
+        });
+
+        // Add mobile menu styles dynamically
+        const mobileMenuStyles = `
+            @media (max-width: 768px) {
+                .nav-menu {
+                    position: fixed;
+                    top: 80px;
+                    left: -100%;
+                    width: 100%;
+                    height: calc(100vh - 80px);
+                    background: rgba(255, 255, 255, 0.98);
+                    backdrop-filter: blur(20px);
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: center;
+                    padding-top: 3rem;
+                    transition: var(--transition);
+                    z-index: 999;
+                }
+
+                .nav-menu.active {
+                    left: 0;
+                }
+
+                .nav-menu li {
+                    margin: 1rem 0;
+                }
+
+                .nav-link {
+                    font-size: 1.25rem;
+                    padding: 1rem 2rem;
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .cta-button {
+                    margin-top: 2rem;
+                    padding: 1rem 3rem;
+                }
+            }
+        `;
+
+        // Inject mobile menu styles
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = mobileMenuStyles;
+        document.head.appendChild(styleSheet);
+
+        // Add performance optimizations
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Service worker would be implemented for PWA features
+                console.log('Ready for service worker implementation');
+            });
+        }
+
+        // Add lazy loading for images (when real images are added)
+        const addLazyLoading = () => {
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.remove('loading');
+                            observer.unobserve(img);
+                        }
+                    });
+                });
+
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+        };
+
+        // Initialize lazy loading when DOM is ready
+        document.addEventListener('DOMContentLoaded', addLazyLoading);
+    </script>
+</body>
+</html>

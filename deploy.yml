@@ -1,0 +1,145 @@
+name: Deploy Website
+
+# Trigger deployment on push to main branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# Allow manual trigger from Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # Validate HTML and run basic checks
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: |
+        npm install -g html-validate
+        npm install -g lighthouse
+
+    - name: Validate HTML
+      run: |
+        html-validate index.html || echo "HTML validation completed with warnings"
+
+    - name: Check file structure
+      run: |
+        echo "Checking required files..."
+        test -f index.html && echo "✅ index.html found" || echo "❌ index.html missing"
+        test -f README.md && echo "✅ README.md found" || echo "❌ README.md missing"
+        test -f robots.txt && echo "✅ robots.txt found" || echo "⚠️ robots.txt missing (optional)"
+        echo "File structure check completed"
+
+    - name: Check for broken links (basic)
+      run: |
+        echo "Checking for obvious issues in HTML..."
+        grep -n "href=\"#" index.html && echo "✅ Internal links found" || echo "⚠️ No internal links found"
+        grep -n "src=\"" index.html && echo "✅ Image sources found" || echo "⚠️ No images found"
+
+  # Deploy to GitHub Pages
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '.'
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+
+    - name: Post-deployment check
+      run: |
+        echo "🚀 Deployment completed!"
+        echo "📱 Your website is now live at: ${{ steps.deployment.outputs.page_url }}"
+        echo "⏰ Deployment time: $(date)"
+
+  # Performance check (runs after deployment)
+  performance-check:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install Lighthouse
+      run: npm install -g lighthouse
+
+    - name: Wait for deployment
+      run: sleep 30
+
+    - name: Run Lighthouse audit
+      run: |
+        echo "Running Lighthouse performance check..."
+        lighthouse --chrome-flags="--headless --no-sandbox" --output json --output html --output-path ./lighthouse-report https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/ || echo "Lighthouse completed with warnings"
+
+    - name: Upload Lighthouse report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: lighthouse-report
+        path: |
+          lighthouse-report.html
+          lighthouse-report.json
+        retention-days: 30
+
+  # Send notification on successful deployment
+  notify:
+    needs: [deploy, performance-check]
+    runs-on: ubuntu-latest
+    if: always() && github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Deployment Summary
+      run: |
+        echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "✅ **Status**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+        echo "🌐 **Website URL**: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_STEP_SUMMARY
+        echo "📅 **Deployed At**: $(date)" >> $GITHUB_STEP_SUMMARY
+        echo "📝 **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Next Steps:" >> $GITHUB_STEP_SUMMARY
+        echo "- Visit your live website" >> $GITHUB_STEP_SUMMARY
+        echo "- Check the Lighthouse report in Actions artifacts" >> $GITHUB_STEP

@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.jgirenovations.com/sitemap.xml
+
+# Block access to sensitive files
+Disallow: /private/
+Disallow: /*.log$
+Disallow: /temp/
+Disallow: /cache/
+
+# Allow all images
+Allow: /images/
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.gif
+Allow: *.svg
+Allow: *.webp
+
+# Crawl delay (optional - be nice to servers)
+Crawl-delay: 1

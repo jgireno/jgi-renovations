@@ -1,0 +1,50 @@
+{
+  "name": "jgi-renovations-website",
+  "version": "1.0.0",
+  "description": "Modern, responsive website for JGI Renovations & Remodeling - Brampton & GTA home renovation specialists",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 8000 -o",
+    "dev": "npx live-server --port=3000 --host=localhost",
+    "build": "echo 'No build process needed - static HTML site'",
+    "validate": "npx html-validate index.html",
+    "lighthouse": "npx lighthouse https://jgireno.github.io/jgi-renovations --output html --output-path ./lighthouse-report.html",
+    "deploy": "echo 'Push to main branch to auto-deploy via GitHub Pages'"
+  },
+  "keywords": [
+    "renovation",
+    "remodeling",
+    "brampton",
+    "gta",
+    "home improvement",
+    "kitchen renovation",
+    "bathroom renovation",
+    "basement apartment",
+    "contractors"
+  ],
+  "author": "JGI Renovations & Remodeling",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgireno/jgi-renovations.git"
+  },
+  "homepage": "https://jgireno.github.io/jgi-renovations",
+  "bugs": {
+    "url": "https://github.com/jgireno/jgi-renovations/issues",
+    "email": "jgireno5159@gmail.com"
+  },
+  "devDependencies": {
+    "html-validate": "^8.0.0",
+    "http-server": "^14.1.1",
+    "lighthouse": "^10.4.0",
+    "live-server": "^1.2.2"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
